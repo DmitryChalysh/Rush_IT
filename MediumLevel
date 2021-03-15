@@ -1,0 +1,75 @@
+using System; 
+using System.Collections.Generic; 
+
+class GFG 
+{ 
+static List<String> 
+letterCombinationsUtil(int[] number, int n, String[] table) 
+{ 
+List<String> list = new List<String>(); 
+
+Queue<String> q = new Queue<String>(); 
+q.Enqueue(""); 
+
+while (q.Count != 0) 
+{ 
+String s = q.Dequeue(); 
+if (s.Length == n) 
+list.Add(s); 
+else 
+{ 
+String val = table[number[s.Length]]; 
+for (int i = 0; i < val.Length; i++) 
+{ 
+q.Enqueue(s + val[i]); 
+} 
+} 
+} 
+return list; 
+} 
+static void letterCombinations(int[] number, int n) 
+{ 
+String[] table = { "0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" }; 
+
+List<String> list = letterCombinationsUtil(number, n, table); 
+for (int i = 0; i < list.Count; i++) 
+{ 
+Console.Write(list[i] + " "); 
+} 
+} 
+public static void Main(String[] args) 
+{ 
+Start: 
+try 
+{ 
+Console.Write("Введите число"); 
+Console.WriteLine(); 
+
+
+string a = Console.ReadLine(); 
+if (a == "") 
+{ 
+Console.WriteLine(" "); 
+} 
+else 
+{ 
+
+int[] number = new int[a.Length]; 
+for (int i = 0; i < number.Length; i++) 
+
+{ 
+number[i] = Convert.ToInt32(a[i].ToString()); 
+
+} 
+
+int n = number.Length; 
+letterCombinations(number, n); 
+} 
+} 
+catch 
+{ 
+Console.WriteLine("Неправильный ввод"); 
+goto Start; 
+} 
+} 
+}
