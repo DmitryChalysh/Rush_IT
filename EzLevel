@@ -1,0 +1,60 @@
+using System;//EZLevel
+
+namespace Rush_ITezlevel
+{
+
+    class MainClass
+    {
+
+        public static void Main(string[] args)
+        {
+            int[] mass = new int[8] { 0, 1, 2, 2, 3, 0, 4, 2 }; 
+           // int[] mass = new int[4] { 4,2,2,4 };
+            int val = 2;
+            Console.WriteLine((string)"Длина массива " + RemoveElement(mass, val));
+        }
+       static int RemoveElement(int[] nums,int val)
+        {
+            int i, j, length, temp,count=0;
+            j = nums.Length-1;
+            length = nums.Length;
+            Array.Sort(nums);
+            for (i = 0;i<nums.Length-count; i++)
+            {
+                if (nums[i] == val)
+                {
+
+                    start:
+
+                    if (nums[j] != val)
+                    {
+                        temp = nums[i];
+                        nums[i] = nums[j];
+                        j--;
+                        length--;
+                        count++;
+                    }
+                    else
+                    {
+                        j--;
+                       
+                        goto start;
+                    }
+      
+                }
+
+            }
+            Console.Write("Массив без двоек -");
+            for (int r = 0; r < nums.Length-count; r++)
+            {
+                Console.Write(nums[r]);
+            }
+            Console.WriteLine("\t");
+
+
+            return length;
+        }
+
+
+    }
+}
